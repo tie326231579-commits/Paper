@@ -1,31 +1,42 @@
 {
-  "project_name": "",
-  "project_id": "",
+  "project_name": "液压伺服系统 PLC I/O 配置与采购优化",
   "repository": "tie326231579-commits/Paper",
-  "branch": "main",
+  "branch": "memory/20260929-project-memory-import",
   "project_status": "active",
-  "current_phase": "项目记忆系统已初始化，等待具体项目身份确认",
-  "main_goal": "【待确认】",
-  "current_mainline": "【待确认】",
-  "current_task": "确认本仓库对应的具体长期项目身份、MAINLINE、当前阶段与当前任务",
-  "current_version": "",
-  "baseline": "",
-  "last_completed_task": "完成四文件项目记忆系统首次初始化",
-  "next_action": "由用户确认本仓库对应的具体项目后，导入已确认的项目事实与技术状态",
-  "blocked_by": [
-    "具体项目身份未确认",
-    "MAINLINE 未确认",
-    "当前版本/baseline（如适用）未确认"
+  "current_phase": "NJ400模块功能核验与采购方案压缩",
+  "main_goal": "建立满足液压伺服系统控制需求并尽可能复用兰石现有NJ400硬件的PLC配置方案，减少重复采购并保证信号兼容。",
+  "current_mainline": "伺服阀信号确认 -> PLC I/O需求 -> 现有模块复用 -> 不同型号兼容性核验 -> 最终模块/槽位确认 -> 最终采购清单与成本",
+  "current_task": "使用官方厂家资料核实AIM401-0804、AOM401-0402/AOM401-0802、PWM401-0801/PWM401-0501的规格与替代关系",
+  "current_procurement_total_cny": 84585,
+  "confirmed_servo_io": {
+    "AO": ["3 x ±10 V", "1 x ±10 mA"],
+    "AI": ["3 x 4-20 mA", "1 x 2-10 V"]
+  },
+  "confirmed_servo_valves": [
+    {"axis":"A轴","model":"FF-662 D02HABF5VSD2-A","qty":1,"command":"±10 V","feedback":"2-10 V"},
+    {"axis":"B轴","model":"FF-661 P80HABF6VSX2-A","qty":1,"command":"±10 mA","feedback":"4-20 mA"},
+    {"axis":"柱塞轴/D轴","model":"FF-133/40 R16KO1MONSM2","qty":2,"command":"±10 V","feedback":"4-20 mA"}
   ],
-  "active_hypotheses": [
-    "【待验证】仓库名 Paper 可能表示论文或科研项目，但具体研究对象不能仅凭仓库名判断"
+  "reuse_rule": "同型号现有模块优先直接扣除；不同型号但功能相近的模块必须经正式厂家资料核验后才能替代。",
+  "last_completed_task": "完成伺服阀型号与AO/AI信号确认，并形成当前84,585元采购基线",
+  "next_action": "优先核实AIM401-0804官方规格及AI总点数，再核实AOM与PWM替代关系",
+  "blocked_by": [
+    "缺少已核实的NJ400官方规格用于确认不同型号模块替代关系",
+    "AI总需求点数16/32尚未最终确认"
+  ],
+  "pending_confirmations": [
+    "AIM401-0804精确规格及单端/差分",
+    "AI最终需要16路还是32路",
+    "AOM401-0402和AOM401-0802是否支持±10 mA",
+    "PWM401-0801能否替代PWM401-0501",
+    "BKM401-1201与NUL401-0101最终数量",
+    "GE20-RTC与GL20-RTU-ECT32是否进入正式配置"
   ],
   "critical_constraints": [
-    "GitHub 项目记忆作为跨会话项目事实源",
-    "AI 推测不得写成项目事实",
-    "支线任务不得自动替代 MAINLINE",
-    "重大主线、目标、核心算法/模型、数据定义、评价指标、baseline、架构或重要版本变更必须先获得用户确认",
-    "不得静默覆盖历史决策"
+    "已确认的伺服阀型号和信号需求不得擅自修改",
+    "不同型号模块不得未经正式核验直接视为可替代",
+    "采购金额需逐项核算",
+    "AI建议与用户确认事实必须分离"
   ],
   "important_paths": {
     "project_memory": "PROJECT_MEMORY.md",
@@ -33,6 +44,6 @@
     "decisions": "DECISIONS.md",
     "task_log": "TASK_LOG.md"
   },
-  "last_verified_commit": "9770aa0697d6632ac06ca8736c28b1179d2e9088",
+  "last_verified_commit": "7704559097ed3894d0179afb3e11bffdd065ea43",
   "last_updated": "2026-09-29"
 }
